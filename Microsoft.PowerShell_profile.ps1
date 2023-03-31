@@ -186,10 +186,10 @@ function find-file($name) {
         Write-Output "${place_path}\${_}"
     }
 }
-function unzip ($file) {
-    Write-Output("Extracting", $file, "to", $pwd)
-    $fullFile = Get-ChildItem -Path $pwd -Filter .\cove.zip | ForEach-Object { $_.FullName }
-    Expand-Archive -Path $fullFile -DestinationPath $pwd
+function unzip ($file, $destination='.') {
+    Write-Output("Extracting " + $file + " to " + $destination)
+    $fullFile = Get-ChildItem -Path $pwd -Filter $file | ForEach-Object { $_.FullName }
+    Expand-Archive -Path $fullFile -DestinationPath $destination
 }
 function grep($regex, $dir) {
     if ( $dir ) {
